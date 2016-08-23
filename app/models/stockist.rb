@@ -1,0 +1,2 @@
+class Stockist < ApplicationRecord
+end

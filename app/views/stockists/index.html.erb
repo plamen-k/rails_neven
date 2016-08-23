@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Stockists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Slug</th>
+      <th>Title</th>
+      <th>Address</th>
+      <th>Lat</th>
+      <th>Lng</th>
+      <th>Thubmnail</th>
+      <th>Title en</th>
+      <th>Title nb</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stockists.each do |stockist| %>
+      <tr>
+        <td><%= stockist.slug %></td>
+        <td><%= stockist.title %></td>
+        <td><%= stockist.address %></td>
+        <td><%= stockist.lat %></td>
+        <td><%= stockist.lng %></td>
+        <td><%= stockist.thubmnail %></td>
+        <td><%= stockist.title_en %></td>
+        <td><%= stockist.title_nb %></td>
+        <td><%= link_to 'Show', stockist %></td>
+        <td><%= link_to 'Edit', edit_stockist_path(stockist) %></td>
+        <td><%= link_to 'Destroy', stockist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stockist', new_stockist_path %>

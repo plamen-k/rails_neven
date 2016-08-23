@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def index
-      @a = 'b'
+    @categories = Category.all
   end
 
   def generate
@@ -31,6 +31,6 @@ class PagesController < ApplicationController
         )
         end
 
-    render inline: "asdasd"
+    render inline: "MyAppName::Application::YOUR_GLOBAL_VARasdasd"
   end
 end

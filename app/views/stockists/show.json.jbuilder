@@ -1,0 +1,1 @@
+json.partial! "stockists/stockist", stockist: @stockist
