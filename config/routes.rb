@@ -1,19 +1,24 @@
 Rails.application.routes.draw do
 
-  resources :stockists
-  resources :heros
-  resources :products
-  resources :categories
-  resources :articles
+  scope "(:locale)", locale: /en|nb/ do
+    resource :cart, only: [:show]
+    resources :order_items, only: [:create, :update, :destroy]
 
-  root :to => "pages#index"
+    resources :stockists
+    resources :heros
+    resources :products
+    resources :categories
+    resources :articles
 
-  get '/generate',  to: 'pages#generate', as: 'generate'
-  get '/about',     to: 'pages#about',    as: "about"
-  get '/contact',   to: 'pages#contact',  as: 'contact'
+    root :to => "pages#index"
 
-  match 'stockist/become' => 'stockist#become', via: [:get, :post], as: 'become_stockist'
+    get '/generate',  to: 'pages#generate', as: 'generate'
+    get '/about',     to: 'pages#about',    as: "about"
+    get '/contact',   to: 'pages#contact',  as: 'contact'
+
+    match 'stockist/become' => 'stockist#become', via: [:get, :post], as: 'become_stockist'
 
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  end
 end

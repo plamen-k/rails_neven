@@ -4,7 +4,7 @@
     <div class="col-md-12 menu">
       <div id="menu_logo_container">
         <%= link_to root_path do %>
-          <%= image_tag "neven_logo.png", lazy: true, alt:"Neven logo" %>
+          <%= image_tag "neven_logo.png", alt:"Neven logo" %>
           <h1 class="capital nomargin logo_title">neven</h1>
         <% end  %>
       </div>
@@ -85,25 +85,30 @@
       <div class="col-md-3 menu_links">
         <ul class="menu_links_ul align_right mobile_left">
           <li class="mobieicon_align">
-            <a href="{{ route('cart', []) }}">
-              <img src="{{asset('images/menu/cart.svg')}}" alt="Cart icon" class="cart_icon"/>
-              <span class="cart_count"> <span class="counter_number">{{Cart::count()}}</span></span>
+            <a href="">
+              <%= image_tag "menu/cart.svg", class:"cart_icon", title: (t :cart) %>
+              <span class="cart_count">
+                <span class="counter_number"><%= 0 %></span>
+              </span>
             </a>
 
           </li>
-          @if(App::isLocale('en'))
+          <% if I18n.locale == :en %>
           <li class="mobieicon_align">
-            <a href="{{LaravelLocalization::getLocalizedURL('nb') }}"><span tite="{{trans('text.language_icon')}}" class="menu_icon mobile_only language_mobile_icon" ></span><span class="language_icon">NO</span>
-            </a>
-          </li>
-          @else
-          <li class="mobieicon_align">
-            <a href="{{LaravelLocalization::getLocalizedURL('en') }}"><span tite="{{trans('text.language_icon')}}" class="menu_icon mobile_only language_mobile_icon"></span><span class="language_icon">EN</span>
-            </a>
-          </li>
-          @endif
+            <span class="menu_icon mobile_only language_mobile_icon" ></span><span class="language_icon">
+              <%= link_to "NO", :locale=>'nb'%>
+              </span>
 
-          @if(!Auth::check())
+          </li>
+          <% else %>
+          <li class="mobieicon_align">
+            </span><span class="language_icon">
+              <%= link_to "EN", '/en'%>
+            </span>
+
+          </li>
+          <% end %>
+          <% if current_user %>
           <li class="mobieicon_align">
             <a title="{{trans('text.sign_in_alt')}}" class="login_button" href="{{ route('auth.login') }}"><span class="menu_icon mobile_only signin_mobile_icon"></span>{{ trans('text.log_in')}}
             </a>
@@ -114,10 +119,10 @@
             </span>{{ trans('text.sign_up')}}</a>
           </li>
 
-          @else
+          <% else %>
           <li><a id="log_out_button" href="{{ route('auth.logout') }}">{{ trans('text.log_out')}}</a></li>
           <li class="logged_user">{{ Auth::user()->name }}</li>
-          @endif
+          <% end %>
 
         </ul>
 

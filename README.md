@@ -1,5 +1,8 @@
 # README
 
+Shopping card used from this article
+https://richonrails.com/articles/building-a-shopping-cart-in-ruby-on-rails
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
