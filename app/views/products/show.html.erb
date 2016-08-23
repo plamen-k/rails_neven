@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @product.slug %>
+</p>
+
+<p>
+  <strong>Thubmnail:</strong>
+  <%= @product.thubmnail %>
+</p>
+
+<p>
+  <strong>Title en:</strong>
+  <%= @product.title_en %>
+</p>
+
+<p>
+  <strong>Title nb:</strong>
+  <%= @product.title_nb %>
+</p>
+
+<p>
+  <strong>Description en:</strong>
+  <%= @product.description_en %>
+</p>
+
+<p>
+  <strong>Description nb:</strong>
+  <%= @product.description_nb %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @product.tags %>
+</p>
+
+<p>
+  <strong>Tips en:</strong>
+  <%= @product.tips_en %>
+</p>
+
+<p>
+  <strong>Tips nb:</strong>
+  <%= @product.tips_nb %>
+</p>
+
+<p>
+  <strong>Benefits en:</strong>
+  <%= @product.benefits_en %>
+</p>
+
+<p>
+  <strong>Benefits nb:</strong>
+  <%= @product.benefits_nb %>
+</p>
+
+<p>
+  <strong>Featured:</strong>
+  <%= @product.featured %>
+</p>
+
+<p>
+  <strong>Categories:</strong>
+  <%= @product.categories %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

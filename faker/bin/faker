@@ -1,0 +1,125 @@
+#!/usr/bin/env ruby
+require 'gli'
+begin # XXX: Remove this begin/rescue before distributing your app
+require 'faker'
+rescue LoadError
+  STDERR.puts "In development, you need to use `bundle exec bin/faker` to run your app"
+  STDERR.puts "At install-time, RubyGems will make sure lib, etc. are in the load path"
+  STDERR.puts "Feel free to remove this message from bin/faker now"
+  exit 64
+end
+
+include GLI::App
+
+program_desc 'Describe your application here'
+
+version Faker::VERSION
+
+subcommand_option_handling :normal
+arguments :strict
+
+desc 'Describe some switch here'
+switch [:s,:switch]
+
+desc 'Describe some flag here'
+default_value 'the default'
+arg_name 'The name of the argument'
+flag [:f,:flagname]
+
+desc 'Describe list here'
+arg_name 'Describe arguments to list here'
+command :list do |c|
+  c.desc 'Describe a switch to list'
+  c.switch :s
+
+  c.desc 'Describe a flag to list'
+  c.default_value 'default'
+  c.flag :f
+  c.action do |global_options,options,args|
+
+    # Your command logic here
+
+    # If you have any errors, just raise them
+    # raise "that command made no sense"
+
+    puts "list command ran"
+  end
+end
+
+desc 'Describe run here'
+arg_name 'Describe arguments to run here'
+command :run do |c|
+  c.desc 'Describe a switch to run'
+  c.switch :s
+
+  c.desc 'Describe a flag to run'
+  c.default_value 'default'
+  c.flag :f
+  c.action do |global_options,options,args|
+
+    category_num = 2;
+    ingredient_num = 2;
+    product_num = 10;
+    ingredients_per_product = 2;
+    related_images = 2;
+    tags = 5;
+    slide_images = 5;
+    articles = 20;
+    options = 2;
+    reviews = 1;
+    stockists = 5;
+    # Your command logic here
+
+    # If you have any errors, just raise them
+    # raise "that command made no sense"
+     1.upto(10) do |i|
+      name = Faker::Name.title
+      Category.create(
+        slug: @name.parameterize,
+        thumbnail: Faker::Avatar.image("my-own-slug"),
+        title_en: @name,
+        title_nb: Faker::Name.title + ' nb',
+        description_en: Faker::Lorem.paragraph(5),
+      )
+      end
+  end
+end
+
+desc 'Describe add here'
+arg_name 'Describe arguments to add here'
+command :add do |c|
+  c.action do |global_options,options,args|
+    puts "add command ran"
+  end
+end
+
+desc 'Describe complete here'
+arg_name 'Describe arguments to complete here'
+command :complete do |c|
+  c.action do |global_options,options,args|
+    puts "complete command ran"
+  end
+end
+
+pre do |global,command,options,args|
+  # Pre logic here
+  # Return true to proceed; false to abort and not call the
+  # chosen command
+  # Use skips_pre before a command to skip this block
+  # on that command only
+  true
+end
+
+post do |global,command,options,args|
+  # Post logic here
+  # Use skips_post before a command to skip this
+  # block on that command only
+end
+
+on_error do |exception|
+  # Error logic here
+  # return false to skip default error handling
+  true
+end
+
+exit run(ARGV)

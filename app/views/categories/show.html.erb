@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @category.slug %>
+</p>
+
+<p>
+  <strong>Thubmnail:</strong>
+  <%= @category.thubmnail %>
+</p>
+
+<p>
+  <strong>Title en:</strong>
+  <%= @category.title_en %>
+</p>
+
+<p>
+  <strong>Title nb:</strong>
+  <%= @category.title_nb %>
+</p>
+
+<p>
+  <strong>Description en:</strong>
+  <%= @category.description_en %>
+</p>
+
+<p>
+  <strong>Description nb:</strong>
+  <%= @category.description_nb %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

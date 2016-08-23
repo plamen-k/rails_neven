@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Video:</strong>
+  <%= @hero.video %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @hero.image %>
+</p>
+
+<p>
+  <strong>Title en:</strong>
+  <%= @hero.title_en %>
+</p>
+
+<p>
+  <strong>Title nb:</strong>
+  <%= @hero.title_nb %>
+</p>
+
+<%= link_to 'Edit', edit_hero_path(@hero) %> |
+<%= link_to 'Back', heros_path %>

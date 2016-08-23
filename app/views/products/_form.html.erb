@@ -1,0 +1,82 @@
+<%= form_for(product) do |f| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :slug %>
+    <%= f.text_field :slug %>
+  </div>
+
+  <div class="field">
+    <%= f.label :thubmnail %>
+    <%= f.text_field :thubmnail %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title_en %>
+    <%= f.text_field :title_en %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title_nb %>
+    <%= f.text_field :title_nb %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description_en %>
+    <%= f.text_field :description_en %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description_nb %>
+    <%= f.text_field :description_nb %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tags %>
+    <%= f.text_field :tags %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tips_en %>
+    <%= f.text_field :tips_en %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tips_nb %>
+    <%= f.text_field :tips_nb %>
+  </div>
+
+  <div class="field">
+    <%= f.label :benefits_en %>
+    <%= f.text_field :benefits_en %>
+  </div>
+
+  <div class="field">
+    <%= f.label :benefits_nb %>
+    <%= f.text_field :benefits_nb %>
+  </div>
+
+  <div class="field">
+    <%= f.label :featured %>
+    <%= f.check_box :featured %>
+  </div>
+
+  <div class="field">
+    <%= f.label :categories_id %>
+    <%= f.text_field :categories_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

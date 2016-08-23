@@ -1,0 +1,6 @@
+= faker
+
+Describe your project here
+
+:include:faker.rdoc
+
